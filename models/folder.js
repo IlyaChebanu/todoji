@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const db = require('../helpers/connection');
 
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
       [folder.name, folder.user_id]
     );
   },
-  
+
   async getFolders(userId) {
     const folders = await db.query(
       `SELECT id, name, user_id FROM folders WHERE user_id = ?`,
@@ -25,7 +24,7 @@ module.exports = {
       `SELECT id, name, user_id FROM folders WHERE id = ?`,
       [folderId]
     );
-    return folder.results[0]; 
+    return folder.results[0];
   },
 
   async deleteFolder(folderId) {
@@ -38,5 +37,5 @@ module.exports = {
     await db.query(`UPDATE folders SET ? WHERE id = ?`,
     [folderName, folderId]
     );
-  } 
+  }
 }

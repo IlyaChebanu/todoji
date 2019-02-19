@@ -74,7 +74,7 @@ module.exports = {
       const userId = parseInt(req.query.id, 10);
       if (userId < 0 ) {
         throw http_errors(400, 'invalid user id');
-      } 
+      }
       await user_model.patchUser(req.body, userId);
       res.status(200).end();
     } catch (error) {
